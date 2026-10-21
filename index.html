@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>my-blog</title>
+  <meta name="description" content="마크다운으로 쓰는 블로그">
+  <script>
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem('theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-title" href="#/">my-blog</a>
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="다크 모드 전환">
+        <span aria-hidden="true" class="theme-icon"></span>
+      </button>
+    </div>
+  </header>
+  <main id="content" class="container" tabindex="-1"></main>
+  <footer class="site-footer">
+    <div class="container">&copy; <span id="year"></span> my-blog</div>
+  </footer>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
